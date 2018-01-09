@@ -29,3 +29,11 @@ def connection_factory(filepath):
     else:
         raise ValueError('Cannot connect to {}'.format(filepath))
     return connector
+
+def connect_to(filepath):
+    factory = None
+    try:
+        factory = connection_factory(filepath)
+    except ValueError as ve:
+        print(ve)
+    return factory
