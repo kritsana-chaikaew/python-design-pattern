@@ -20,3 +20,12 @@ class XMLConnector:
     @property
     def parsed_data(self):
         return self.tree
+
+def connection_factory(filepath):
+    if filepath.endwith('json'):
+        connector = JSONConnector
+    elif filepath.endwith('xml'):
+        connector = XMLConnector
+    else:
+        raise ValueError('Cannot connect to {}'.format(filepath))
+    return connector
